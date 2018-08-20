@@ -6,18 +6,15 @@ class ThermometerController extends Controller
 {
     public function index()
     {
-        $temperature = app('redis')->get('temperature');
-        $temperature = str_replace("'", '"', $temperature);
-        $temperature = json_decode($temperature, true);
-
-        $humidity = app('redis')->get('humidity');
-        $humidity = str_replace("'", '"', $humidity);
-        $humidity = json_decode($humidity, true);
+        $thermometer = app('redis')->get('thermometer');
+        $thermometer = str_replace("'", '"', $thermometer);
+        $thermometer = json_decode($thermometer, true);
 
         return \Respond::succeed([
-            "temperature" => $temperature['value'],
-            "humidity" => $humidity['value'],
-            "updated_at" => $temperature['created_at']
+            "temperature" => $thermometer['temperature'],
+            "humidity" => $thermometer['humidity'],
+            "cooler_status" => (int)$thermometer['cooler_status'],
+            "updated_at" => $thermometer['created_at']
         ]);
     }
 }
