@@ -13,7 +13,7 @@ class ThermometerController extends Controller
         return \Respond::succeed([
             "temperature" => $thermometer['temperature'],
             "humidity" => $thermometer['humidity'],
-            "cooler_status" => (int)$thermometer['cooler_status'],
+            "cooler_status" => (boolean)$thermometer['cooler_status'],
             "updated_at" => $thermometer['created_at']
         ]);
     }
