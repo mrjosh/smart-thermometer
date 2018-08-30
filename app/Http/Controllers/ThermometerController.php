@@ -14,7 +14,7 @@ class ThermometerController extends Controller
             "temperature" => $thermometer['temperature'],
             "humidity" => $thermometer['humidity'],
             "cooler_status" => (boolean)$thermometer['cooler_status'],
-            "updated_at" => $thermometer['created_at']
+            "updated_at" => $thermometer['updated_at']
         ]);
     }
 }
