@@ -10,6 +10,11 @@ class LightsController extends Controller
         $lights = str_replace("'", '"', $lights);
         $lights = json_decode($lights, true);
 
-        return \Respond::succeed($lights);
+        $status = ( $lights['status'] == "On" ? true : false );
+
+        return \Respond::succeed([
+            "status" => $status,
+            "created_at" => $lights['created_at']
+        ]);
     }
 }
